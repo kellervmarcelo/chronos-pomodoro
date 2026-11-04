@@ -25,7 +25,7 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel) {
         ...state,
         activeTask: null,
         secondsRemaining: 0,
-        formattedSeconds: '00:00',
+        formattedSecondsRemaining: '00:00',
         tasks: state.tasks.map(task => {
           if (state.activeTask?.id === task.id) {
             return { ...task, interruptDate: Date.now() };
@@ -33,6 +33,35 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel) {
           return task;
         }),
       };
+    }
+
+    case TaskActionTypes.COUNT_DOWN: {
+      return {
+        ...state,
+        secondsRemaining: action.payload.secondsRemaining,
+        formattedSecondsRemaining: formatSecondsToMinutes(
+          action.payload.secondsRemaining,
+        ),
+      };
+    }
+
+    case TaskActionTypes.COMPLETE_TASK: {
+      return {
+        ...state,
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: '00:00',
+        tasks: state.tasks.map(task => {
+          if (state.activeTask?.id === task.id) {
+            return { ...task, completeDate: Date.now() };
+          }
+          return task;
+        }),
+      };
+    }
+
+    default: {
+      return state;
     }
   }
 }
