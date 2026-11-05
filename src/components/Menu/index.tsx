@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import styles from './styles.module.css';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router';
 
 type AvailableThemes = 'dark' | 'light';
 
@@ -36,22 +37,22 @@ export default function Menu() {
 
   return (
     <nav className={styles.menu}>
-      <a
+      <Link
         className={styles.linkMenu}
-        href='#'
+        to='/'
         aria-label='Ir para a home'
         title='Ir para a home'
       >
         <HouseIcon size={24} />
-      </a>
-      <a
+      </Link>
+      <Link
         className={styles.linkMenu}
-        href='#'
+        to='#'
         aria-label='Ver histórico'
         title='Ver histórico'
       >
         <HistoryIcon size={24} />
-      </a>
+      </Link>
       <a
         className={styles.linkMenu}
         href='#'
