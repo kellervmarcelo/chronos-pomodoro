@@ -9,6 +9,7 @@ import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 import { Tips } from '../Tips';
+import { showMessage } from '../../adapters/tostifyWrapper';
 
 export default function MainForm() {
   const { state, dispatch } = useTaskContext();
@@ -25,7 +26,9 @@ export default function MainForm() {
     const taskName = taskNameInput.current.value?.trim();
 
     if (!taskName) {
-      alert('Digite o nome da tarefa');
+      showMessage.dismiss();
+
+      showMessage.warn('Digite o nome da tarefa');
       return;
     }
 
@@ -40,6 +43,8 @@ export default function MainForm() {
     };
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
+
+    showMessage.sucess('Tarefa iniciada');
   }
 
   function handleInterruptTask(
