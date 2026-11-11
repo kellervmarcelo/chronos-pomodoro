@@ -38,3 +38,46 @@
   text-align: left;
   padding: 1.6rem;
 }
+
+.thSort {
+  cursor: pointer;
+  transition: all 0.1.s ease-in-out;
+}
+
+.thSort:hover {
+  filter: brightness(80%);
+}
+
+.noTasksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.noTasksContainer p {
+  text-align: center;
+  font-weight: bold;
+}
+
+.noTasksContainer a {
+  border: none;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22rem;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  margin: 4.8rem 0;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+
+  transition: all 0.1s ease-in-out;
+}
+
+.noTasksContainer a:hover {
+  filter: brightness(0.8);
+}
