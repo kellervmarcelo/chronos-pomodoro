@@ -31,6 +31,10 @@ function History() {
   const hasTasks = state.tasks.length;
 
   useEffect(() => {
+    document.title = 'Histórico - Chronos Pomodoro';
+  }, []);
+
+  useEffect(() => {
     async function resetState() {
       setSortTaskOptions(prevState => ({
         ...prevState,
